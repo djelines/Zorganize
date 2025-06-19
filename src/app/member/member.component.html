@@ -3,22 +3,23 @@
   <div class="card-header" role="banner">
     Team Member
   </div>
+  @let mem = member(); 
   <div class="card-content">
-    <div class="name">{{member.name}} {{member.surname}}</div>
+    <div class="name" (click)="onNameClick()">{{mem.name}} {{mem.surname}}</div>
 
     <div class="info-group">
       <div class="info-label">Role</div>
-      <div class="info-value role manager">{{member.role}}</div>
+      <div class="info-value role manager">{{mem.role}}</div>
     </div>
 
     <div class="info-group">
       <div class="info-label">Department</div>
-      <div class="info-value">{{member.departement}}</div>
+      <div class="info-value">{{mem.departement}}</div>
     </div>
 
     <div class="info-group">
       <div class="info-label">Level</div>
-      <div class="info-value">{{member.level}}</div>
+      <div class="info-value">{{mem.level | level }}</div>
     </div>
   </div>
 </div>

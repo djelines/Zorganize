@@ -1,31 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { Member } from '../model/member.model';
+import { LevelPipe } from '../level.pipe';
 
-type Role = 'manager' | 'contributor' | 'observer';
-type Departement = 'IT' | 'Design' | 'Marketing' ;
-type Level = 'Junior' | 'Mid' | 'Senior' ; 
-
-interface Member {
-    _id: number;
-    name: string;
-    surname: string;
-    role: Role;
-    departement: Departement;
-    level: Level;
-}
 
 @Component({
   selector: 'app-member',
-  imports: [],
+  imports: [LevelPipe],
   templateUrl: './member.component.html',
   styleUrl: './member.component.css'
 })
 export class MemberComponent {
-  member: Member = {
-    "_id" : 1,
-    "name" : "Alice",
-    "surname" : "Dupont",
-    "role": "manager",
-    "departement": "IT",
-    "level" : "Junior",
+  member = input.required<Member>()
+  nameClick = output<string>();
+
+  onNameClick(){
+    this.nameClick.emit(String(this.member()._id)); 
   }
 }

@@ -2,10 +2,14 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WlcComponent } from './wlc/wlc.component';
 import { MemberComponent } from "./member/member.component";
+import { DatePipe } from '@angular/common';
+import { LevelPipe } from './level.pipe';
+import { Member } from './model/member.model';
 
 @Component({
   selector: 'app-root',
-  imports: [WlcComponent, MemberComponent],
+  imports: [WlcComponent, MemberComponent, 
+  ],
   // template : 'toto', 
   /** 
   template: `
@@ -28,7 +32,7 @@ import { MemberComponent } from "./member/member.component";
   */
   template: `
   <app-wlc />
-  <app-member/>
+  <app-member [member]="member" (nameClick)="onNameClick($event)" />
   `, 
   // templateUrl: './app.component.html', // url vers le template HTML 
   // styleUrl: './app.component.css',  // url vers le style du composant
@@ -48,8 +52,21 @@ import { MemberComponent } from "./member/member.component";
   
 })
 export class AppComponent {
-  title = 'Welcome to Zorganize';
-  quota = 1; 
+
+  member: Member = {
+    "_id" : 1,
+    "name" : "Alice",
+    "surname" : "Dupont",
+    "role": "manager",
+    "departement": "IT",
+    "level" : "J",
+  }; 
+
+  onNameClick(memberId : string) {
+    console.log(memberId)
+  }
+
+  
   counter = 0 ; 
   theValue = ''; 
   msgClass : 'success' | 'error' = 'success' ; 
