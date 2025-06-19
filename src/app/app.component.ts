@@ -26,11 +26,18 @@ import { MemberComponent } from "./member/member.component";
   <button (click)="changeColor('success')">Succes</button>
   `, 
   */
-  template: `<app-member/>`, 
+  template: `
+  <app-wlc />
+  <app-member/>
+  `, 
   // templateUrl: './app.component.html', // url vers le template HTML 
   // styleUrl: './app.component.css',  // url vers le style du composant
   styles: [`
-  h1{color : blue} 
+
+  *{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
   .success{
     color: green
   }
@@ -47,8 +54,6 @@ export class AppComponent {
   theValue = ''; 
   msgClass : 'success' | 'error' = 'success' ; 
   inputType : 'password' | 'text' = 'password' ; 
-
-
 
   increment(){
     this.counter++

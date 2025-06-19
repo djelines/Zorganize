@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './wlc.component.css'
 })
 export class WlcComponent {
-
+  title = 'Welcome to Zorganize';
+  quota = 1; 
 }
